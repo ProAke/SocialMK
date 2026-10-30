@@ -154,6 +154,7 @@ const th: Record<string, string> = {
   'invite.invalid': 'คำเชิญไม่พร้อมใช้งาน',
   'invite.notPending': 'คำเชิญนี้หมดอายุหรือถูกเพิกถอนแล้ว กรุณาขอคำเชิญใหม่จากผู้ดูแล workspace',
   'invite.backHome': 'กลับหน้าแรก',
+  'login.inviteHint': 'เข้าสู่ระบบด้วย {email} เพื่อตอบรับคำเชิญนี้',
   'login.subtitle': 'จัดการทุกโซเชียลของธุรกิจในที่เดียว',
   'login.email': 'อีเมล',
   'login.password': 'รหัสผ่าน',
@@ -862,6 +863,7 @@ const en: Record<string, string> = {
   'invite.invalid': 'Invitation unavailable',
   'invite.notPending': 'This invitation has expired or was revoked. Ask the workspace admin for a new one.',
   'invite.backHome': 'Back to home',
+  'login.inviteHint': 'Sign in as {email} to accept this invitation',
   'login.subtitle': 'Run every social channel of your business in one place',
   'login.email': 'Email',
   'login.password': 'Password',
@@ -1278,6 +1280,7 @@ const en: Record<string, string> = {
   'team.you': 'You',
   'team.lastOwnerError': 'The last owner cannot be removed',
 
+  'developers.adminOnly': 'Only owners and admins can manage the API',
   'developers.title': 'Developers & API',
   'developers.subtitle': 'Move your data into other systems, safely',
   'developers.tab.keys': 'API Keys',
