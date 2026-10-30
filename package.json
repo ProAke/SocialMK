@@ -1,0 +1,28 @@
+{
+  "name": "socialmk",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "description": "SocialMK — social marketing command center for brands (Beta)",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @socialmk/api",
+    "dev:web": "npm run dev -w @socialmk/web",
+    "build": "npm run build -w @socialmk/web && npm run build -w @socialmk/api",
+    "start": "npm run start -w @socialmk/api",
+    "seed": "npm run seed -w @socialmk/api",
+    "seed:prod": "npm run seed:prod -w @socialmk/api",
+    "db:reset": "node scripts/reset-db.mjs",
+    "typecheck": "npm run typecheck -w @socialmk/api && npm run typecheck -w @socialmk/web",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}

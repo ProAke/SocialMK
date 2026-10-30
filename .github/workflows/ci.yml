@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'arena/**']
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: Typecheck, build, smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: i18n coverage
+        run: npm run check:i18n
+
+      - name: Build
+        run: npm run build
+
+      - name: Seed demo data
+        run: npm run seed
+
+      - name: API smoke test
+        run: |
+          node apps/api/dist/index.js &
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:4000/api/health > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run smoke
